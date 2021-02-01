@@ -95,8 +95,8 @@ jobs:
           sed -i "s/0.1.0/$number/g" $HELM_CHART/Chart.yaml
       - name: Prepare legacy chart
         run: |
-          rsync -r ${LEGACY_HELM_CHART} $HELM_CHARTS_DIR
-          rsync -r ${HELM_CHART}/* ${LEGACY_HELM_CHART} --exclude=Chart.yaml --exclude=crds
+          rsync -r $LEGACY_HELM_CHART $HELM_CHARTS_DIR
+          rsync -r $HELM_CHART/* $LEGACY_HELM_CHART --exclude=Chart.yaml --exclude=crds
       - name: Install ossutil
         run: wget http://gosspublic.alicdn.com/ossutil/1.7.0/ossutil64 && chmod +x ossutil64 && mv ossutil64 ossutil
       - name: Configure Alibaba Cloud OSSUTIL
@@ -105,8 +105,8 @@ jobs:
         run: ./ossutil --config-file .ossutilconfig sync oss://$BUCKET/core .oss/
       - name: Package helm charts
         run: |
-          helm package ${HELM_CHART} --destination .oss/
-          helm package ${LEGACY_HELM_CHART} --destination .oss/
-          helm repo index --url https://$BUCKET.${ENDPOINT}/core .oss/
+          helm package $HELM_CHART --destination .oss/
+          helm package $LEGACY_HELM_CHART --destination .oss/
+          helm repo index --url https://$BUCKET.$ENDPOINT/core .oss/
       - name: sync local to cloud
         run: ./ossutil --config-file .ossutilconfig sync .oss/ oss://$BUCKET/core -f
