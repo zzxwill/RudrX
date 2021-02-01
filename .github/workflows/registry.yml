@@ -8,7 +8,6 @@ on:
   workflow_dispatch: {}
 
 env:
-  BUCKET: kubevelacharts
   ENDPOINT: oss-cn-hangzhou.aliyuncs.com
   ACCESS_KEY: ${{ secrets.OSS_ACCESS_KEY }}
   ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
@@ -91,7 +90,7 @@ jobs:
         run:  |
           version=${{ steps.get_version.outputs.VERSION }}
           number=${version#"v"}
-          sed -i "s/latest/$number/g" charts/vela-core/values.yaml
+          sed -i "s/latest/$number/g" $HELM_CHART/values.yaml
           sed -i "s/0.1.0/$number/g" $HELM_CHART/Chart.yaml
       - name: Prepare legacy chart
         run: |
