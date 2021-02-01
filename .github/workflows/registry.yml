@@ -107,6 +107,6 @@ jobs:
         run: |
           helm package $(HELM_CHART) --destination .oss/
           helm package $(LEGACY_HELM_CHART) --destination .oss/
-          helm repo index --url https://$BUCKET.oss-cn-hangzhou.aliyuncs.com/core .oss/
+          helm repo index --url https://$BUCKET.${ENDPOINT}/core .oss/
       - name: sync local to cloud
         run: ./ossutil --config-file .ossutilconfig sync .oss/ oss://$BUCKET/core -f
