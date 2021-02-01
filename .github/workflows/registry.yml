@@ -91,8 +91,8 @@ jobs:
         run:  |
           version=${{ steps.get_version.outputs.VERSION }}
           number=${version#"v"}
-          sed -i "s/latest/$number/g" $(HELM_CHART)/values.yaml
-          sed -i "s/0.1.0/$number/g" $(HELM_CHART)/Chart.yaml
+          sed -i "s/latest/$number/g" ${HELM_CHART}/values.yaml
+          sed -i "s/0.1.0/$number/g" ${HELM_CHART}/Chart.yaml
       - name: Prepare legacy chart
         run: |
           rsync -r $(LEGACY_HELM_CHART) $HELM_CHARTS_DIR
