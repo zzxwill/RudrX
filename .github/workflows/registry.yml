@@ -105,8 +105,8 @@ jobs:
         run: ./ossutil --config-file .ossutilconfig sync oss://$BUCKET/core .oss/
       - name: Package helm charts
         run: |
-          helm package $(HELM_CHART) --destination .oss/
-          helm package $(LEGACY_HELM_CHART) --destination .oss/
+          helm package ${HELM_CHART} --destination .oss/
+          helm package ${LEGACY_HELM_CHART} --destination .oss/
           helm repo index --url https://$BUCKET.${ENDPOINT}/core .oss/
       - name: sync local to cloud
         run: ./ossutil --config-file .ossutilconfig sync .oss/ oss://$BUCKET/core -f
