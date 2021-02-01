@@ -9,7 +9,7 @@ on:
 
 env:
   BUCKET: oam-website
-  ENDPOINT: oss-cn-hangzhou.aliyuncs.com
+  ENDPOINT: oss-cn-beijing.aliyuncs.com
   ACCESS_KEY: ${{ secrets.OSS_ACCESS_KEY }}
   ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
 
