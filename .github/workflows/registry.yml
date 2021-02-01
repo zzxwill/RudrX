@@ -65,7 +65,7 @@ jobs:
   publish-charts:
     env:
       HELM_CHARTS_DIR: charts
-      HELM_CHART: $HELM_CHARTS_DIR/vela-core
+      HELM_CHART: charts/vela-core
       LEGACY_HELM_CHART: legacy/charts/vela-core-legacy
     runs-on: ubuntu-20.04
     steps:
