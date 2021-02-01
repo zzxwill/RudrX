@@ -9,8 +9,8 @@ on:
 
 env:
   ENDPOINT: oss-cn-hangzhou.aliyuncs.com
-  ACCESS_KEY: ${{ secrets.OSS_ACCESS_KEY }}
-  ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+  ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+  ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
 
 jobs:
   publish-images:
