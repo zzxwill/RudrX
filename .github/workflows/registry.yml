@@ -99,7 +99,7 @@ jobs:
           patch="0"
           next_repo_tag="$major.$(($minor + 1)).$patch"
           image_tag=${GITHUB_REF#refs/tags/}
-          chart_version=${tag#"v"}
+          chart_version=${latest_repo_tag#"v"}
           if [[ ${GITHUB_REF} == "refs/heads/master" ]]; then
             image_tag=latest
             chart_version=${next_repo_tag}-rc-master
