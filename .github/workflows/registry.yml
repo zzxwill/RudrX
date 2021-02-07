@@ -106,8 +106,9 @@ jobs:
           fi
           image_tag=latest
           chart_version=${next_repo_tag}-rc-master
-          sed -i "s/latest/${image_tag}/g" $HELM_CHART/values.yaml
-          sed -i "s/latest/image_tag/g" $LEGACY_HELM_CHART/values.yaml
+          image_tag_semver=${image_tag#"v"}
+          sed -i "s/latest/${image_tag_semver}/g" $HELM_CHART/values.yaml
+          sed -i "s/latest/${image_tag_semver}/g" $LEGACY_HELM_CHART/values.yaml
           sed -i "s/0.1.0/$chart_version/g" $HELM_CHART/Chart.yaml
           sed -i "s/0.1.0/$chart_version/g" $LEGACY_HELM_CHART/Chart.yaml
           cat $HELM_CHART/Chart.yaml
