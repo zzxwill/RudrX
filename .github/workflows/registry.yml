@@ -94,8 +94,8 @@ jobs:
         run:  |
           latest_repo_tag=${{ steps.latest_tag.outputs.tag }}
           sub="."
-          major="$(cut -d"$sub" -f1 <<<"latest_repo_tag")"
-          minor="$(cut -d"$sub" -f2 <<<"latest_repo_tag")"
+          major="$(cut -d"$sub" -f1 <<<"$latest_repo_tag")"
+          minor="$(cut -d"$sub" -f2 <<<"$latest_repo_tag")"
           patch="0"
           next_repo_tag="$major.$(($minor + 1)).$patch"
           image_tag=${GITHUB_REF#refs/tags/}
