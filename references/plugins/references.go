@@ -392,6 +392,7 @@ func (ref *ParseReference) parseParameters(paraValue cue.Value, paramKey string,
 		if err != nil {
 			return fmt.Errorf("arguments not defined as struct %w", err)
 		}
+
 		for i := 0; i < arguments.Len(); i++ {
 			var param ReferenceParameter
 			fi := arguments.Field(i)
@@ -412,7 +413,7 @@ func (ref *ParseReference) parseParameters(paraValue cue.Value, paramKey string,
 				depth := *recurseDepth
 				if subField, _ := val.Struct(); subField.Len() == 0 { // err cannot be not nil,so ignore it
 					if mapValue, ok := val.Elem(); ok {
-						// In the future we could recursive call to surpport complex map-value(struct or list)
+						// In the future we could recursive call to support complex map-value(struct or list)
 						param.PrintableType = fmt.Sprintf("map[string]%s", mapValue.IncompleteKind().String())
 					} else {
 						return fmt.Errorf("failed to got Map kind from %s", param.Name)

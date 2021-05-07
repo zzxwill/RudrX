@@ -102,6 +102,11 @@ output: {
 	min: int
 }
 `
+
+	var cueStr3 = `
+parameter: string
+`
+
 	cases := map[string]struct {
 		reason string
 		cueStr string
@@ -119,6 +124,13 @@ output: {
 			cueStr: CueStrNotContainParameter,
 			want: want{
 				err: fmt.Errorf("parameter not exist"),
+			},
+		},
+		"CUEStringOnlyContainParameter": {
+			reason: "cue string just contains parameter",
+			cueStr: cueStr3,
+			want: want{
+				err: nil,
 			},
 		},
 	}
